@@ -21,17 +21,16 @@ use Throwable;
  */
 final class QueryTest extends UnitTestCase
 {
-    private Uri $uri;
     private Reference&MockObject $reference;
     private ApiClient&MockObject $apiClient;
     private Query $query;
 
     protected function setUp(): void
     {
-        $this->uri = new Uri('http://example.com/some/path');
+        $uri = new Uri('http://example.com/some/path');
 
         $reference = $this->createMock(Reference::class);
-        $reference->method('getURI')->willReturn($this->uri);
+        $reference->method('getURI')->willReturn($uri);
 
         $this->reference = $reference;
 
