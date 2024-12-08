@@ -18,7 +18,6 @@ return RectorConfig::configure()
         privatization: true,
         earlyReturn: true,
         phpunitCodeQuality: true,
-        phpunit: true,
     )
     ->withImportNames(removeUnusedImports: true)
 ;
