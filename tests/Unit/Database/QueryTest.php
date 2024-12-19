@@ -22,7 +22,9 @@ use Throwable;
 final class QueryTest extends UnitTestCase
 {
     private Reference&MockObject $reference;
+
     private ApiClient&MockObject $apiClient;
+
     private Query $query;
 
     protected function setUp(): void

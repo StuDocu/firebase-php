@@ -21,6 +21,7 @@ final class ServiceAccountTest extends IntegrationTestCase
      * @var non-empty-string
      */
     private static string $credentialsPath;
+
     private static ?string $originalCredentials;
 
     public static function setUpBeforeClass(): void

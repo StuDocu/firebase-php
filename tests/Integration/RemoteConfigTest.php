@@ -138,7 +138,9 @@ final class RemoteConfigTest extends IntegrationTestCase
             }
         }
         CONFIG;
+
     private Template $template;
+
     private RemoteConfig $remoteConfig;
 
     protected function setUp(): void

@@ -17,6 +17,7 @@ use Psr\Http\Message\RequestInterface;
 final class MiddlewareTest extends UnitTestCase
 {
     private Request $request;
+
     private Closure $handler;
 
     protected function setUp(): void

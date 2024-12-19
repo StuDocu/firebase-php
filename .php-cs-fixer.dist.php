@@ -9,6 +9,7 @@ return (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setRules([
         '@PER-CS2.0' => true,
+        'class_attributes_separation' => true,
         'class_definition' => [
             'single_line' => true,
         ],

@@ -24,6 +24,7 @@ use PHPUnit\Framework\Attributes\Test;
 final class DatabaseApiExceptionConverterTest extends UnitTestCase
 {
     private DatabaseApiExceptionConverter $converter;
+
     private Request $request;
 
     protected function setUp(): void

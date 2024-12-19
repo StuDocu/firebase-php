@@ -29,10 +29,15 @@ use function implode;
 final class CloudMessage implements Message
 {
     private MessageData $data;
+
     private Notification $notification;
+
     private AndroidConfig $androidConfig;
+
     private ApnsConfig $apnsConfig;
+
     private WebPushConfig $webPushConfig;
+
     private FcmOptions $fcmOptions;
 
     private function __construct(

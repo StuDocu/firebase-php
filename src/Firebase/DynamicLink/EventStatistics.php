@@ -27,7 +27,9 @@ use function array_filter;
 final class EventStatistics implements Countable, IteratorAggregate
 {
     public const PLATFORM_ANDROID = 'ANDROID';
+
     public const PLATFORM_DESKTOP = 'DESKTOP';
+
     public const PLATFORM_IOS = 'IOS';
 
     // Any click on a Dynamic Link, irrespective to how it is handled and its destinations

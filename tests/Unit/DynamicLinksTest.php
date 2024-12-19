@@ -43,7 +43,9 @@ use Psr\Http\Message\RequestInterface;
 final class DynamicLinksTest extends TestCase
 {
     private MockHandler $httpHandler;
+
     private string $dynamicLinksDomain = 'https://link.example.com';
+
     private DynamicLinks $service;
 
     protected function setUp(): void

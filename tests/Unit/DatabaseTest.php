@@ -19,7 +19,9 @@ use PHPUnit\Framework\MockObject\MockObject;
 final class DatabaseTest extends UnitTestCase
 {
     private ApiClient&MockObject $apiClient;
+
     private string $url;
+
     private Database $database;
 
     protected function setUp(): void

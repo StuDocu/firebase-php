@@ -36,6 +36,7 @@ use const DATE_ATOM;
 final class MessagingApiExceptionConverterTest extends TestCase
 {
     private MessagingApiExceptionConverter $converter;
+
     private FrozenClock $clock;
 
     protected function setUp(): void

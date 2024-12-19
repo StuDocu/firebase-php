@@ -88,15 +88,20 @@ final class Factory
      * @var ServiceAccountShape|null
      */
     private ?array $serviceAccount = null;
+
     private ?FetchAuthTokenInterface $googleAuthTokenCredentials = null;
 
     /**
      * @var non-empty-string|null
      */
     private ?string $projectId = null;
+
     private CacheItemPoolInterface $verifierCache;
+
     private CacheItemPoolInterface $authTokenCache;
+
     private CacheItemPoolInterface $keySetCache;
+
     private ClockInterface $clock;
 
     /**
@@ -118,7 +123,9 @@ final class Factory
      * @var non-empty-string|null
      */
     private ?string $tenantId = null;
+
     private HttpFactory $httpFactory;
+
     private HttpClientOptions $httpClientOptions;
 
     /**

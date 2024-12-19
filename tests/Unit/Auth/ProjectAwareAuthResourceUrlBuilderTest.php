@@ -16,6 +16,7 @@ use function putenv;
 final class ProjectAwareAuthResourceUrlBuilderTest extends TestCase
 {
     private string $projectId;
+
     private ProjectAwareAuthResourceUrlBuilder $builder;
 
     protected function setUp(): void

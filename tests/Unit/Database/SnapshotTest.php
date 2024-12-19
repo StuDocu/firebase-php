@@ -16,8 +16,11 @@ use PHPUnit\Framework\MockObject\MockObject;
 final class SnapshotTest extends UnitTestCase
 {
     private Reference&MockObject $reference;
+
     private Snapshot $snapshotWithArrayValue;
+
     private Snapshot $snapshotWithScalarValue;
+
     private Snapshot $snapshotWithEmptyValue;
 
     protected function setUp(): void

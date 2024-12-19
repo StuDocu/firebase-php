@@ -17,7 +17,9 @@ use function random_bytes;
 abstract class DatabaseTestCase extends IntegrationTestCase
 {
     protected static string $refPrefix;
+
     protected static Database $db;
+
     protected static Client $apiClient;
 
     public static function setUpBeforeClass(): void

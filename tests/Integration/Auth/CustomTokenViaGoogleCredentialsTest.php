@@ -20,7 +20,9 @@ use PHPUnit\Framework\Attributes\Test;
 final class CustomTokenViaGoogleCredentialsTest extends IntegrationTestCase
 {
     private string $uid = 'some-uid';
+
     private CustomTokenViaGoogleCredentials $generator;
+
     private Auth $auth;
 
     protected function setUp(): void

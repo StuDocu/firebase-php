@@ -23,6 +23,7 @@ use function mb_strlen;
 final class DynamicLinksTest extends IntegrationTestCase
 {
     private DynamicLinks $service;
+
     private string $domain = 'https://beste.page.link';
 
     protected function setUp(): void

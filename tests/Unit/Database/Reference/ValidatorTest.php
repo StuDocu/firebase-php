@@ -22,6 +22,7 @@ use function str_pad;
 final class ValidatorTest extends UnitTestCase
 {
     private UriInterface $uri;
+
     private Validator $validator;
 
     protected function setUp(): void

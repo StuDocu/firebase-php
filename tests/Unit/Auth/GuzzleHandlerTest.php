@@ -25,7 +25,9 @@ use const JSON_FORCE_OBJECT;
 final class GuzzleHandlerTest extends UnitTestCase
 {
     private MockHandler $httpResponses;
+
     private SignIn $action;
+
     private GuzzleHandler $handler;
 
     protected function setUp(): void

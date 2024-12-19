@@ -86,7 +86,7 @@
         ],
         "analyze": "@analyse",
         "cs": [
-            "vendor/bin/php-cs-fixer fix --diff --verbose"
+            "PHP_CS_FIXER_IGNORE_ENV=true vendor/bin/php-cs-fixer fix --diff --verbose"
         ],
         "docs": [
             "cd docs && make html"

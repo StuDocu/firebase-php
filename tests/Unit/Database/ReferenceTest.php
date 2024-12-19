@@ -19,6 +19,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 final class ReferenceTest extends UnitTestCase
 {
     private ApiClient&MockObject $apiClient;
+
     private Reference $reference;
 
     protected function setUp(): void

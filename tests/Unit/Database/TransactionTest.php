@@ -21,6 +21,7 @@ use Throwable;
 final class TransactionTest extends TestCase
 {
     private ApiClient&MockObject $apiClient;
+
     private Transaction $transaction;
 
     protected function setUp(): void

@@ -16,7 +16,9 @@ use function putenv;
 final class TenantAwareAuthResourceUrlBuilderTest extends TestCase
 {
     private string $projectId;
+
     private string $tenantId;
+
     private TenantAwareAuthResourceUrlBuilder $builder;
 
     protected function setUp(): void
