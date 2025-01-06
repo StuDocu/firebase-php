@@ -89,6 +89,11 @@ final class Factory
      */
     private ?array $serviceAccount = null;
 
+    /**
+     * @var non-empty-string|null
+     */
+    private ?string $serviceAccountIdForCustomTokenGeneration = null;
+
     private ?FetchAuthTokenInterface $googleAuthTokenCredentials = null;
 
     /**
@@ -166,6 +171,17 @@ final class Factory
 
         $factory = clone $this;
         $factory->serviceAccount = $serviceAccount;
+
+        return $factory;
+    }
+
+    /**
+     * @param non-empty-string $serviceAccountId
+     */
+    public function withServiceAccountIdForCustomTokenGeneration(string $serviceAccountId): self
+    {
+        $factory = clone $this;
+        $factory->serviceAccountIdForCustomTokenGeneration = $serviceAccountId;
 
         return $factory;
     }
@@ -666,7 +682,7 @@ final class Factory
         $credentials = $this->getGoogleAuthTokenCredentials();
 
         if ($credentials instanceof SignBlobInterface) {
-            return new CustomTokenViaGoogleCredentials($credentials, $this->tenantId);
+            return new CustomTokenViaGoogleCredentials($credentials, $this->tenantId, $this->serviceAccountIdForCustomTokenGeneration);
         }
 
         return null;
