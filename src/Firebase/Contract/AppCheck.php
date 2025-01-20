@@ -6,6 +6,7 @@ namespace Kreait\Firebase\Contract;
 
 use Kreait\Firebase\AppCheck\AppCheckToken;
 use Kreait\Firebase\AppCheck\AppCheckTokenOptions;
+use Kreait\Firebase\AppCheck\VerifyAppCheckTokenOptions;
 use Kreait\Firebase\AppCheck\VerifyAppCheckTokenResponse;
 use Kreait\Firebase\Exception;
 
@@ -26,11 +27,12 @@ interface AppCheck
 
     /**
      * @param non-empty-string $appCheckToken
+     * @param VerifyAppCheckTokenOptions|null $options
      *
      * @throws Exception\AppCheck\InvalidAppCheckToken
      * @throws Exception\AppCheck\FailedToVerifyAppCheckToken
      * @throws Exception\AppCheckException
      * @throws Exception\FirebaseException
      */
-    public function verifyToken(string $appCheckToken): VerifyAppCheckTokenResponse;
+    public function verifyToken(string $appCheckToken, VerifyAppCheckTokenOptions $options = null): VerifyAppCheckTokenResponse;
 }
