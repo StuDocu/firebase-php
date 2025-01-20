@@ -7,7 +7,14 @@ Please read about the future of the Firebase Admin PHP SDK on the
 
 ## [Unreleased]
 
-## [7.16.0]
+## [7.16.1] - 2025-01-20
+
+### Fixed
+
+* It wasn't possible to upgrade the SDK to a newer version because it required a `lcobucci/jwt` release that doesn't
+  support PHP 8.1 anymore. This was fixed by changing the version requirement from `^5.4.2` to `^5.3`.
+
+## [7.16.0] - 2024-11-17
 
 ### Added
 
