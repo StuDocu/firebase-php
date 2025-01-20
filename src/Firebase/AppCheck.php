@@ -9,6 +9,7 @@ use Kreait\Firebase\AppCheck\AppCheckToken;
 use Kreait\Firebase\AppCheck\AppCheckTokenGenerator;
 use Kreait\Firebase\AppCheck\AppCheckTokenOptions;
 use Kreait\Firebase\AppCheck\AppCheckTokenVerifier;
+use Kreait\Firebase\AppCheck\VerifyAppCheckTokenOptions;
 use Kreait\Firebase\AppCheck\VerifyAppCheckTokenResponse;
 
 use function is_array;
@@ -37,9 +38,15 @@ final class AppCheck implements Contract\AppCheck
         return AppCheckToken::fromArray($result);
     }
 
-    public function verifyToken(string $appCheckToken): VerifyAppCheckTokenResponse
+    public function verifyToken(string $appCheckToken, VerifyAppCheckTokenOptions $options = null): VerifyAppCheckTokenResponse
     {
         $decodedToken = $this->tokenVerifier->verifyToken($appCheckToken);
+
+        if ($options && $options->consume) {
+            $tokenConsumptionResult = $this->client->consumeToken($appCheckToken);
+
+            return new VerifyAppCheckTokenResponse($decodedToken->app_id, $decodedToken, $tokenConsumptionResult['alreadyConsumed']);
+        }
 
         return new VerifyAppCheckTokenResponse($decodedToken->app_id, $decodedToken);
     }
