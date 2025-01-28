@@ -45,7 +45,7 @@ final class AppCheck implements Contract\AppCheck
         if ($options && $options->consume) {
             $tokenConsumptionResult = $this->client->consumeToken($appCheckToken);
 
-            return new VerifyAppCheckTokenResponse($decodedToken->app_id, $decodedToken, $tokenConsumptionResult['alreadyConsumed']);
+            return new VerifyAppCheckTokenResponse($decodedToken->app_id, $decodedToken, $tokenConsumptionResult['alreadyConsumed'] ?? null);
         }
 
         return new VerifyAppCheckTokenResponse($decodedToken->app_id, $decodedToken);
