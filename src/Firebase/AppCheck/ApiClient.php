@@ -23,6 +23,7 @@ final class ApiClient
 
     public function __construct(
         private readonly ClientInterface $client,
+        private readonly string $projectId,
     ) {
         $this->errorHandler = new AppCheckApiExceptionConverter();
     }
@@ -34,12 +35,29 @@ final class ApiClient
      */
     public function exchangeCustomToken(string $appId, string $customToken): array
     {
-        $response = $this->requestApi('POST', 'apps/'.$appId.':exchangeCustomToken', [
+        $response = $this->requestApi('POST', $this->projectId.'/apps/'.$appId.':exchangeCustomToken', [
             'headers' => [
                 'Content-Type' => 'application/json; UTF-8',
             ],
             'body' => Json::encode([
                 'customToken' => $customToken,
+            ]),
+        ]);
+
+        return Json::decode((string) $response->getBody(), true);
+    }
+
+    /**
+     * @return array{alreadyConsumed?: bool}
+     * @throws AppCheckException
+     *
+     */
+    public function consumeToken(string $appCheckToken): array
+    {
+
+        $response = $this->requestApi('POST', "https://firebaseappcheck.googleapis.com/v1beta/projects/$this->projectId:verifyAppCheckToken", [
+            'body' => Json::encode([
+                'appCheckToken' => $appCheckToken,
             ]),
         ]);
 

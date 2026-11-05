@@ -344,7 +344,7 @@ final class Factory
         }
 
         $http = $this->createApiClient([
-            'base_uri' => 'https://firebaseappcheck.googleapis.com/v1/projects/'.$projectId.'/',
+            'base_uri' => 'https://firebaseappcheck.googleapis.com/v1/projects/',
         ]);
 
         $keySet = new CachedKeySet(
@@ -357,7 +357,7 @@ final class Factory
         );
 
         return new AppCheck(
-            new AppCheck\ApiClient($http),
+            new AppCheck\ApiClient($http, $projectId),
             new AppCheckTokenGenerator(
                 $serviceAccount['client_email'],
                 $serviceAccount['private_key'],

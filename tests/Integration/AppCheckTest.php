@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Kreait\Firebase\Tests\Integration;
 
+use Kreait\Firebase\AppCheck\VerifyAppCheckTokenOptions;
 use Kreait\Firebase\Contract\AppCheck;
 use Kreait\Firebase\Tests\IntegrationTestCase;
 use PHPUnit\Framework\Attributes\Test;
@@ -51,5 +52,29 @@ final class AppCheckTest extends IntegrationTestCase
 
         $this->assertSame(self::$appId, $response->appId);
         $this->assertSame(self::$appId, $response->token->app_id);
+    }
+
+    #[Test]
+    public function consumeToken(): void
+    {
+        $token = $this->appCheck->createToken(self::$appId);
+
+        $firstAttemptResponse = $this->appCheck->verifyToken($token->token, VerifyAppCheckTokenOptions::fromArray(['consume' => true]));
+
+        $retries = 10;
+        $delay = 1;
+        $secondAttemptResponse = null;
+
+        // Introduce a delay to allow for eventual consistency in the App Check API.
+        for ($i = 0; $i < $retries; $i++) {
+            $secondAttemptResponse = $this->appCheck->verifyToken($token->token, VerifyAppCheckTokenOptions::fromArray(['consume' => true]));
+            if ($secondAttemptResponse->alreadyConsumed) {
+                break;
+            }
+            sleep($delay);
+        }
+
+        $this->assertNull($firstAttemptResponse->alreadyConsumed);
+        $this->assertTrue($secondAttemptResponse->alreadyConsumed);
     }
 }
